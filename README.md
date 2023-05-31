@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+Реализовать SPA “Каталог книг” на любом frontend фреймворке/библиотеке. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Требования:
+Хранение данных организовать используя Firestore и соответствующий SDK;
+На главной странице должен отображаться список всех книг доступных в системе;
+Книги должны быть разбиты на группы по году публикации, группы должны быть отсортированы в обратном порядке (сначала новые), внутри группы книги сортируются по названию;
+Нужна возможность добавлять и удалять книги;
+Система должна рекомендовать хорошую книгу для прочтения:
+Хорошая книга должна пройти проверку временем, поэтому она должна быть издана не менее 3 лет назад;
+Из всех проверенных временем книг нужно выбрать лучшие - с самым высоким рейтингом;
+Если нашлось несколько хороших книг выбрать одну случайным образом;
 
-## Available Scripts
+Поля книги:
+- название (обязательный параметр, не более 100 символов);
+- список авторов (книга должна содержать хотя бы одного автора);
+- год публикации (опциональный параметр, не раньше 1800);
+- рейтинг (опциональный параметр, целое число, от 0 до 10, по умолчанию 0);
+- ISBN (опциональный параметр);
 
-In the project directory, you can run:
+Структура вывода данных:
+Рекомендуемая книга
+2020
+Книга А
+Книга Б
+2018
+Книга И
+Книга К
+Книга Л
+2015
+Книга Е
+Книги без указания года
+Книга В
 
-### `npm start`
+Дополнительные функции (по желанию):
+Валидация ISBN;
+Смена режима группировки (по рейтингу, по автору);
+Редактирование книг;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+Пример тестовых данных:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Идеальный программист. Как стать профессионалом разработки ПО
+Автор: Роберт Мартин
+Год публикации: 2011
+Рейтинг: 5
+ISBN: 978-5-459-01044-2
 
-### `npm run build`
+Практическое руководство по винокурению
+Автор: Павел Иевлев
+Год публикации: 2021
+Рейтинг: 5
+ISBN: 978-5-04-088830-6
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+7 навыков высокоэффективных людей
+Автор: Стивен Кови
+Год публикации: 1989
+Рейтинг: 5
+ISBN: 978-5-9614-2021-0
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Цвет волшебства
+Автор: Терри Пратчетт
+Год публикации: 2011
+Рейтинг: 5
+ISBN: 978-5-699-15629-0
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Психбольница в руках пациентов
+Автор: Алан Купер
+Год публикации: 2004
+Рейтинг: 4
+ISBN: 978-5-4461-0674-5
 
-### `npm run eject`
+Интрижки мишки
+Автор: Елена Галенко
+Год публикации: 2021
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Чистый код: создание, анализ и рефакторинг
+Автор: Роберт Мартин
+Рейтинг: 5
+ISBN: 978-5-496-00487-9
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Джордж и Большой взрыв
+Авторы: Стивен Хокинг, Люси Хокинг
+Год публикации: 2011
+Рейтинг: 5
+ISBN: 978-5-4370-0089-2
