@@ -120,7 +120,7 @@ function App() {
 
   const groupAndSortBooks = (books) => {
     const sortedBooks = [...books].sort(
-      (a, b) => b.year - a.year || a.title.localeCompare(b.title)
+      (a, b) => b.year - a.year || b.title.localeCompare(a.title)
     );
     const groups = {};
     sortedBooks.forEach((book) => {
@@ -201,8 +201,8 @@ function App() {
             <div key={book.id} style={bookCardStyles}>
               <h4>{book.title}</h4>
               <p>Authors: {book.authors}</p>
-              <p>ISBN: {book.isbn}</p>
-              <p>Rating: {book.rating}</p>
+              {book.isbn && <p>ISBN: {book.isbn}</p>}
+              {book.rating && <p>Rating: {book.rating}</p>}
               <button onClick={() => deleteBook(book.id)}>Delete</button>
             </div>
           ))}
