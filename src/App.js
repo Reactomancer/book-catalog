@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "./firebase";
 
 function App() {
@@ -23,8 +31,9 @@ function App() {
 
   const fetchBooks = async () => {
     try {
-      const snapshot = await db.collection("books").get();
-      const booksData = snapshot.docs.map((doc) => ({
+      const firestore = getFirestore();
+      const querySnapshot = await getDocs(collection(firestore, "books"));
+      const booksData = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
@@ -50,7 +59,7 @@ function App() {
     }
 
     try {
-      const docRef = await db.collection("books").add(newBook);
+      const docRef = await addDoc(collection(db, "books"), newBook);
       setNewBook({
         title: "",
         authors: [],
@@ -67,7 +76,7 @@ function App() {
 
   const deleteBook = async (id) => {
     try {
-      await db.collection("books").doc(id).delete();
+      await deleteDoc(doc(db, "books", id));
       fetchBooks();
       console.log("Book deleted with ID:", id);
     } catch (error) {
